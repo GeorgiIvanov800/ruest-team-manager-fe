@@ -20,7 +20,7 @@
   const sleeveNumber = ref<number>(Number(route.query.sleeveNumber) || 0);
   const dateTime = format(new Date().toLocaleDateString(), 'dd/MM/yyyy');
   let manufactureDate = '';
-  const keycloak: VueKeycloakInstance = useKeycloak();
+  const keycloak = useKeycloak() as unknown as VueKeycloakInstance
 
   const name: string = keycloak.fullName!;
 

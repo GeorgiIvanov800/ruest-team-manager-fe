@@ -2,7 +2,7 @@
 import { useKeycloak, type VueKeycloakInstance } from '@dsb-norge/vue-keycloak-js';
 import { Configuration, type SaveSleeveRequest, SleeveControllerApi, type SleeveResponse } from '@/openapi';
 
-const keycloak: VueKeycloakInstance = useKeycloak();
+const keycloak = useKeycloak() as unknown as VueKeycloakInstance
 
 const configuration = new Configuration({
   accessToken: () => {
