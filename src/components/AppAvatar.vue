@@ -12,7 +12,9 @@
   const nameInitials: string = getInitials(fullName);
 
   function onLogout (): void {
-    keycloak.keycloak?.logout();
+    keycloak.keycloak?.logout({
+      redirectUri: window.location.origin + '/'
+    });
   }
 </script>
 

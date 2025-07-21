@@ -44,7 +44,7 @@ export function registerPlugins (app: App) {
   app.use(VueKeycloak, {
     ...keycloakOptions,
     onReady: keycloak => {
-      isAdmin.value = keycloak?.hasRealmRole?.('admin') ?? false;
+      isAdmin.value = keycloak?.hasResourceRole?.('admin') ?? false;
       app.provide(IsAdminKey, readonly(isAdmin));
 
       isKeycloakReady.value = true;

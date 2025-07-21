@@ -7,10 +7,11 @@ import Components from 'unplugin-vue-components/vite'
 import {VueRouterAutoImports} from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 // Utilities
-import {defineConfig} from 'vite'
+import {build, defineConfig} from 'vite'
 
 import Layouts from 'vite-plugin-vue-layouts-next'
 import Vuetify, {transformAssetUrls} from 'vite-plugin-vuetify'
+import {webfontDl, webfontDownload} from "vite-plugin-webfont-dl";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -39,6 +40,7 @@ export default defineConfig({
     Vue({
       template: {transformAssetUrls},
     }),
+    webfontDownload(),
     // https://github.com/vuetifyjs/vuetify-loader/tree/master/packages/vite-plugin#readme
     Vuetify({
       autoImport: true,
@@ -46,18 +48,12 @@ export default defineConfig({
         configFile: 'src/styles/settings.scss',
       },
     }),
-    Fonts({
-      fontsource: {
-        families: [
-          {
-            name: 'Roboto',
-            weights: [100, 300, 400, 500, 700, 900],
-            styles: ['normal', 'italic'],
-          },
-        ],
-      },
-    }),
   ],
+  build: {
+    // Спира полифила за <link rel="preload"> и пуска само <link rel="modulepreload">
+
+    polyfillModulePreload: false,
+  },
   optimizeDeps: {
     exclude: [
       'vuetify',

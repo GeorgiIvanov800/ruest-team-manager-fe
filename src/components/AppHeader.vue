@@ -35,7 +35,7 @@
           <v-icon>mdi-plus-circle-outline</v-icon>
         </v-btn>
       </template>
-      <span>Neu Sleese</span>
+      <span>Neu Sleeve</span>
     </v-tooltip>
     <v-app-bar-title class="text-h6 text-white">
       Rüst Team Manager

@@ -3,10 +3,10 @@ import type { VueKeycloakOptions } from '@dsb-norge/vue-keycloak-js'
 export const keycloakOptions: VueKeycloakOptions = {
   init: {
     onLoad: 'login-required',
-    silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
+    checkLoginIframe: false,
   },
   config: {
-    url: 'http://localhost:9090',
+    url: 'http://localhost:9090/auth',
     realm: 'ruest-team-manager',
     clientId: 'rtm',
   },
